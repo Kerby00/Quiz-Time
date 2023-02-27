@@ -35,3 +35,14 @@ hr{
     background-color: black;
     border: 5px bold black;
 }
+
+button {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+button:hover {
+opacity: 50%;
+}

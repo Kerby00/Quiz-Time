@@ -150,6 +150,8 @@ function saveScore(e) {
     };
     storedUsers.push(newScore)
     localStorage.setItem('highscore', JSON.stringify(storedUsers))
+    window.location.href = 'score.html'
 }
 //9. redirect them to highscore
 
+ 

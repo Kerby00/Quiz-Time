@@ -8,7 +8,7 @@ body{
     align-items: center;
 }
 
-#quizsect, #quiz, #time {
+#quizsect, #quiz, #time, #scorepage {
     height: 100%;
     display: flex;
     flex-direction: column;

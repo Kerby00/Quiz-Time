@@ -38,9 +38,12 @@ function pageload() {
     quizSection.style = "display: none";
 }
 pageload()
-
+var score = 0
 var questionCount = 0
 function runQuiz() {
+    if(questionCount === 3) {
+        return endQuiz();
+    }
     timerleft.innerHTML = 'TIME: ' + sec;
     question.innerHTML = questions[questionCount].q;
     anwserA.innerHTML = questions[questionCount].a;
@@ -72,7 +75,58 @@ function setTime() {
 //4. display first question with 4 choices
 
 //5. manage user decision
+function SelectionA () {
+    if (questions[questionCount].anwser === 'a'){
+        questionCount++;
+score += 10;
+console.log('correct')
+    }else{
+        questionCount++;
+        sec -=5;
+        console.log('wrong')
+    } runQuiz()
+}
+function SelectionB () {
+    if (questions[questionCount].anwser === 'b'){
+        questionCount++;
+score += 10;
+console.log('correct')
+    }else{
+        questionCount++;
+        sec -=5;
+        console.log('wrong')
+    } runQuiz()
+}
+function SelectionC () {
+    if (questions[questionCount].anwser === 'c'){
+        questionCount++;
+score += 10;
+console.log('correct')
+    }else{
+        questionCount++;
+        sec -=5;
+        console.log('wrong')
+    } runQuiz()
+}
+function SelectionD () {
+    if (questions[questionCount].anwser === 'd'){
+        questionCount++;
+score += 10;
+console.log('correct')
+    }else{
+        questionCount++;
+        sec -=5;
+        console.log('wrong')
+    } runQuiz()
+}
+anwserA.addEventListener('click', SelectionA);
+anwserB.addEventListener('click', SelectionB);
+anwserC.addEventListener('click', SelectionC);
+anwserD.addEventListener('click', SelectionD);
 //6. end quiz and input uzer intials
+function endQuiz() {
+    quizSection.style = 'display: none';
+}
 //8. save highscore in local stoarge
 //9. redirect them to highscore
 

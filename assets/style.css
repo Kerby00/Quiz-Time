@@ -2,7 +2,7 @@ body{
     background-color: burlywood;
 }
 
-#startquiz{
+#startquiz, #end{
     display: flex;
     justify-content: center;
     align-items: center;

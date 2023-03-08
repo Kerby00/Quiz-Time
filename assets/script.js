@@ -7,7 +7,10 @@ const anwserA = document.getElementById('answerA')
 const anwserB = document.getElementById('answerB')
 const anwserC = document.getElementById('answerC')
 const anwserD = document.getElementById('answerD')
-//1. create an array of questions
+const endpage = document.getElementById('end')
+const Form = document.getElementById('userForm')
+const userInit = document.getElementById('inits')
+//1. create an array of questionsS
 var questions = [
     {
         q: "Commonlly used data types DO NOT include:",
@@ -34,14 +37,22 @@ var questions = [
     }
 ]
 //2. start button to begin quiz
+let storedUsers;
 function pageload() {
     quizSection.style = "display: none";
+    endpage.style = "display:none";
+    if(JSON.parse(localStorage.getItem('highscore')) === null) {
+        storedUsers = []
+    } else {
+        storedUsers = JSON.parse(localStorage.getItem('highscore'))
+    }
+    console.log(storedUsers)
 }
 pageload()
 var score = 0
 var questionCount = 0
 function runQuiz() {
-    if(questionCount === 3) {
+    if (questionCount === 3) {
         return endQuiz();
     }
     timerleft.innerHTML = 'TIME: ' + sec;
@@ -60,7 +71,7 @@ quizbttn.addEventListener('click', function () {
 
 });
 //3. create timer abd start quiz
-var sec = 3
+var sec = 12
 function setTime() {
     var Intervali = setInterval(function () {
         timerleft.innerHTML = 'TIME: ' + sec;
@@ -75,47 +86,47 @@ function setTime() {
 //4. display first question with 4 choices
 
 //5. manage user decision
-function SelectionA () {
-    if (questions[questionCount].anwser === 'a'){
+function SelectionA() {
+    if (questions[questionCount].anwser === 'a') {
         questionCount++;
-score += 10;
-console.log('correct')
-    }else{
+        score += 10;
+        console.log('correct')
+    } else {
         questionCount++;
-        sec -=5;
+        sec -= 5;
         console.log('wrong')
     } runQuiz()
 }
-function SelectionB () {
-    if (questions[questionCount].anwser === 'b'){
+function SelectionB() {
+    if (questions[questionCount].anwser === 'b') {
         questionCount++;
-score += 10;
-console.log('correct')
-    }else{
+        score += 10;
+        console.log('correct')
+    } else {
         questionCount++;
-        sec -=5;
+        sec -= 5;
         console.log('wrong')
     } runQuiz()
 }
-function SelectionC () {
-    if (questions[questionCount].anwser === 'c'){
+function SelectionC() {
+    if (questions[questionCount].anwser === 'c') {
         questionCount++;
-score += 10;
-console.log('correct')
-    }else{
+        score += 10;
+        console.log('correct')
+    } else {
         questionCount++;
-        sec -=5;
+        sec -= 5;
         console.log('wrong')
     } runQuiz()
 }
-function SelectionD () {
-    if (questions[questionCount].anwser === 'd'){
+function SelectionD() {
+    if (questions[questionCount].anwser === 'd') {
         questionCount++;
-score += 10;
-console.log('correct')
-    }else{
+        score += 10;
+        console.log('correct')
+    } else {
         questionCount++;
-        sec -=5;
+        sec -= 5;
         console.log('wrong')
     } runQuiz()
 }
@@ -126,7 +137,19 @@ anwserD.addEventListener('click', SelectionD);
 //6. end quiz and input uzer intials
 function endQuiz() {
     quizSection.style = 'display: none';
+    endpage.style = 'display: flex'
 }
 //8. save highscore in local stoarge
+Form.addEventListener('submit', saveScore);
+
+function saveScore(e) {
+    e.preventDefault()
+    newScore = {
+        User: userInit.value,
+        userScore: score
+    };
+    storedUsers.push(newScore)
+    localStorage.setItem('highscore', JSON.stringify(storedUsers))
+}
 //9. redirect them to highscore
 

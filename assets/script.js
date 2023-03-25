@@ -71,7 +71,7 @@ quizbttn.addEventListener('click', function () {
 
 });
 //3. create timer abd start quiz
-var sec = 12
+var sec = 10
 function setTime() {
     var Intervali = setInterval(function () {
         timerleft.innerHTML = 'TIME: ' + sec;

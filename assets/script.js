@@ -76,8 +76,9 @@ function setTime() {
     var Intervali = setInterval(function () {
         timerleft.innerHTML = 'TIME: ' + sec;
         sec--;
-        if (sec === 0) {
-            clearInterval(Intervali)
+        if (sec <= 0) {
+            clearInterval(Intervali),
+            endQuiz()
         }
     }, 1000)
 }
